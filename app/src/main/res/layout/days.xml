@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--text for day on screen-->
+    <TextView
+        android:id="@+id/day"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Monday"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--morning temperature-->
+    <TextView
+        android:id="@+id/morning_temp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="18\nmorning"
+        android:textSize="30sp"
+        android:gravity="center"
+        app:layout_constraintEnd_toStartOf="@id/day_temp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/day" />
+
+    <!--day temperature-->
+    <TextView
+        android:id="@+id/day_temp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="25\nday"
+        android:textSize="30sp"
+        android:gravity="center"
+        app:layout_constraintEnd_toStartOf="@id/evening_temp"
+        app:layout_constraintStart_toEndOf="@id/morning_temp"
+        app:layout_constraintTop_toBottomOf="@id/day" />
+
+    <!--evening temperature-->
+    <TextView
+        android:id="@+id/evening_temp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="20\nevening"
+        android:textSize="30sp"
+        android:gravity="center"
+        app:layout_constraintEnd_toStartOf="@id/night_temp"
+        app:layout_constraintStart_toEndOf="@id/day_temp"
+        app:layout_constraintTop_toBottomOf="@id/day" />
+
+    <!--night temperature-->
+    <TextView
+        android:id="@+id/night_temp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="19\nnight"
+        android:textSize="30sp"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/evening_temp"
+        app:layout_constraintTop_toBottomOf="@id/day" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

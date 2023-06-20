@@ -18,15 +18,17 @@ private val retrofit = Retrofit.Builder()
     .baseUrl(BASE_URL)
     .build()
 
-interface CoordinatesApiService {
-    @GET("geo/1.0/direct")
-    suspend fun getLocationData(
-        @Query("q") q: String,
-        @Query("limit") limit: Int,
+interface WeatherDataApiService {
+    //funkcija za api poziv
+    @GET("data/3.0/onecall")
+    suspend fun getWeatherData(
+        @Query("lat") lat: Double?,
+        @Query("lon") lon: Double?,
+        @Query("units") units: String,
         @Query("appid") appId: String
-    ): List<CoordinatesResponse>
+    ): WeatherDataResponse
 }
 
-object CoordinatesApi {
-    val retrofitService: CoordinatesApiService by lazy { retrofit.create(CoordinatesApiService::class.java) }
+object WeatherDataApi {
+    val retrofitService: WeatherDataApiService by lazy {retrofit.create(WeatherDataApiService::class.java)}
 }

@@ -13,7 +13,7 @@ import com.example.weatherapp.databinding.FragmentSearchBinding
 class SearchFragment : Fragment() {
     private lateinit var binding: FragmentSearchBinding
 
-    private val viewModel: WeatherViewModel by viewModels()
+    private val viewModel: CoordinatesViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,

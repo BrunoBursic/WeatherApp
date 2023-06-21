@@ -19,6 +19,12 @@ class WeatherDataViewModel (private val coordinatesViewModel: CoordinatesViewMod
     lateinit var hourlyData: List<WeatherDataResponse.HourlyWeather>
     lateinit var dailyData: List<WeatherDataResponse.DailyWeather>
 
+    lateinit var dt: String
+    lateinit var temp: String
+    lateinit var pressure: String
+    lateinit var humidity: String
+    lateinit var visibility: String
+
     fun weatherData() {
         viewModelScope.launch {
             try {
@@ -33,6 +39,11 @@ class WeatherDataViewModel (private val coordinatesViewModel: CoordinatesViewMod
                 hourlyData = weatherData.hourly
                 dailyData = weatherData.daily
 
+                dt = currentData.dt.toString()
+                temp = currentData.temp.toString()
+                pressure = currentData.pressure.toString()
+                humidity = currentData.humidity.toString()
+                visibility = currentData.visibility.toString()
             } catch (_: Exception) {
 
             }

@@ -1,17 +1,23 @@
-package com.example.weatherapp
+package com.example.weatherapp.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.weatherapp.network.WeatherDataApi
+import com.example.weatherapp.network.WeatherDataResponse
 import kotlinx.coroutines.launch
 
-class WeatherDataViewModel(coordinatesViewModel: CoordinatesViewModel) : ViewModel(){
+class WeatherDataViewModel (private val coordinatesViewModel: CoordinatesViewModel) : ViewModel(){
     //https://medium.com/@summitkumar/sharing-data-between-viewmodels-in-androids-mvvm-architecture-56a5009e4e63
     //link za share-anje podataka između viewmodela
+
     private val latLiveData: LiveData<Double> = coordinatesViewModel.getLat()
     private val lonLiveData: LiveData<Double> = coordinatesViewModel.getLon()
     val cityNameLiveData: LiveData<String> = coordinatesViewModel.getcityName()
+
+    lateinit var currentData: WeatherDataResponse.CurrentWeather
+    lateinit var hourlyData: List<WeatherDataResponse.HourlyWeather>
+    lateinit var dailyData: List<WeatherDataResponse.DailyWeather>
 
     fun weatherData() {
         viewModelScope.launch {
@@ -23,9 +29,10 @@ class WeatherDataViewModel(coordinatesViewModel: CoordinatesViewModel) : ViewMod
                     "1dfb4f777e8166a625871672bfe34c06"
                 )
 
-                val currentData = weatherData.current
-                val hourlyData = weatherData.hourly
-                val dailyData = weatherData.daily
+                currentData = weatherData.current
+                hourlyData = weatherData.hourly
+                dailyData = weatherData.daily
+
             } catch (_: Exception) {
 
             }

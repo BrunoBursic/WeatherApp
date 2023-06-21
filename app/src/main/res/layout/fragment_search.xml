@@ -2,15 +2,15 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".SearchFragment">
+    tools:context=".fragments.SearchFragment">
 
     <data>
         <variable
             name="searchFragment"
-            type="com.example.weatherapp.SearchFragment" />
+            type="com.example.weatherapp.fragments.SearchFragment" />
         <variable
             name="coordinatesViewModel"
-            type="com.example.weatherapp.CoordinatesViewModel" />
+            type="com.example.weatherapp.viewmodels.CoordinatesViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

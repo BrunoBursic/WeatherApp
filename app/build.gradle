@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace 'com.example.weatherapp'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.example.weatherapp"
         minSdk 21
-        targetSdk 33
+        targetSdk 34
         versionCode 1
         versionName "1.0"
 
@@ -57,6 +57,7 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.1'
     implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
     implementation 'androidx.gridlayout:gridlayout:1.0.0'
+    implementation 'androidx.core:core-ktx:+'
     implementation 'androidx.core:core-ktx:+'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

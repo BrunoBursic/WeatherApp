@@ -1,4 +1,4 @@
-package com.example.weatherapp
+package com.example.weatherapp.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,13 +7,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import com.example.weatherapp.R
 import com.example.weatherapp.databinding.FragmentSearchBinding
+import com.example.weatherapp.viewmodels.CoordinatesViewModel
+import com.example.weatherapp.viewmodels.WeatherDataViewModel
 
 
 class SearchFragment : Fragment() {
     private lateinit var binding: FragmentSearchBinding
 
     private val viewModel: CoordinatesViewModel by viewModels()
+    private val viewModel2: WeatherDataViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,7 +33,7 @@ class SearchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.lifecycleOwner = viewLifecycleOwner
-        binding.weatherViewModel = viewModel
+        binding.coordinatesViewModel = viewModel
 
         binding.searchButton.setOnClickListener { enterCity() }
     }
@@ -39,5 +43,6 @@ class SearchFragment : Fragment() {
         val city = binding.nameOfCity.text.toString()
 
         viewModel.coordinates(city)
+        viewModel2.weatherData()
     }
 }

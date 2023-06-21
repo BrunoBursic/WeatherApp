@@ -12,14 +12,14 @@ data class WeatherDataResponse(
         val pressure: Float,
         val humidity: Float,
         val visibility: Float,
-        val weather: Weather
+        //val weather: Weather
     )
 
     data class HourlyWeather(
         val dt: Long,
         val temp: Float,
         val pop: Float,
-        val weather: Weather
+        //val weather: Weather
     )
 
     data class DailyWeather(
@@ -27,7 +27,7 @@ data class WeatherDataResponse(
         val temp: Temperature,
         val summary: String,
         val pop: Float,
-        val weather: Weather
+        //val weather: Weather
     )
 
     data class Temperature(
@@ -38,8 +38,8 @@ data class WeatherDataResponse(
         )
 
     data class Weather(
-        val id: Int,
-        val main: String,
+        //val id: Int,
+        //val main: String,
         val description: String,
         val icon: String
     )

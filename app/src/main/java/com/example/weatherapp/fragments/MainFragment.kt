@@ -22,7 +22,7 @@ class MainFragment : Fragment() {
 
     private lateinit var binding: FragmentMainBinding
     private val viewModel2: CoordinatesViewModel by viewModels()
-    private val viewModel: WeatherDataViewModel by viewModels{MyViewModelFactory(viewModel2)}
+    private val viewModel: WeatherDataViewModel by viewModels { MyViewModelFactory(viewModel2) }
 
     override fun onCreateView(
         inflater: LayoutInflater,

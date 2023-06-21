@@ -5,11 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.example.weatherapp.R
 import com.example.weatherapp.network.WeatherDataResponse
 
-class DailyAdapter(private val dayScreens: List<WeatherDataResponse.DailyWeather>) : RecyclerView.Adapter<DailyAdapter.DailyViewHolder>() {
+class DailyAdapter(private val dayScreens: LiveData<List<WeatherDataResponse.DailyWeather>>) :
+    RecyclerView.Adapter<DailyAdapter.DailyViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DailyViewHolder {
         val layout = LayoutInflater.from(parent.context).inflate(R.layout.hourly, parent, false)
 
@@ -17,22 +19,22 @@ class DailyAdapter(private val dayScreens: List<WeatherDataResponse.DailyWeather
     }
 
     override fun onBindViewHolder(holder: DailyViewHolder, position: Int) {
-        val currentItem = dayScreens.get(position)
+        val currentItem = dayScreens.value?.get(position)
 
-        holder.day.text = currentItem.dt.toString()
-        holder.morningTemp.text = currentItem.temp.morn.toString()
-        holder.dayTemp.text = currentItem.temp.day.toString()
-        holder.eveningTemp.text = currentItem.temp.eve.toString()
-        holder.nightTemp.text = currentItem.temp.night.toString()
-        holder.rain.text = currentItem.pop.toString()
-        holder.summary.text = currentItem.summary
+        holder.day.text = currentItem?.dt.toString()
+        holder.morningTemp.text = currentItem?.temp?.morn.toString()
+        holder.dayTemp.text = currentItem?.temp?.day.toString()
+        holder.eveningTemp.text = currentItem?.temp?.eve.toString()
+        holder.nightTemp.text = currentItem?.temp?.night.toString()
+        holder.rain.text = currentItem?.pop.toString()
+        holder.summary.text = currentItem?.summary
     }
 
     override fun getItemCount(): Int {
-        return dayScreens.size
+        return dayScreens.value?.size ?: 0
     }
 
-    class DailyViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class DailyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val day: TextView = itemView.findViewById(R.id.day)
         val morningTemp: TextView = itemView.findViewById(R.id.morning_temp)
         val dayTemp: TextView = itemView.findViewById(R.id.day_temp)

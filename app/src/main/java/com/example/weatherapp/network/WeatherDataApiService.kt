@@ -30,5 +30,5 @@ interface WeatherDataApiService {
 }
 
 object WeatherDataApi {
-    val retrofitService: WeatherDataApiService by lazy {retrofit.create(WeatherDataApiService::class.java)}
+    val retrofitService: WeatherDataApiService by lazy { retrofit.create(WeatherDataApiService::class.java) }
 }

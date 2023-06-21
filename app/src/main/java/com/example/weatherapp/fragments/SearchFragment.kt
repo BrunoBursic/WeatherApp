@@ -18,7 +18,7 @@ class SearchFragment : Fragment() {
     private lateinit var binding: FragmentSearchBinding
 
     private val viewModel: CoordinatesViewModel by viewModels()
-    private val viewModel2: WeatherDataViewModel by viewModels{ MyViewModelFactory(viewModel) }
+    private val viewModel2: WeatherDataViewModel by viewModels { MyViewModelFactory(viewModel) }
 
     override fun onCreateView(
         inflater: LayoutInflater,

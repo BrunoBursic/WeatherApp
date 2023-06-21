@@ -13,17 +13,17 @@ class CoordinatesViewModel : ViewModel() {
         get() = _citydata
 
     private var lat = MutableLiveData<Double>()
-    fun getLat() : LiveData<Double> {
+    fun getLat(): LiveData<Double> {
         return lat
     }
 
     private var lon = MutableLiveData<Double>()
-    fun getLon() : LiveData<Double> {
+    fun getLon(): LiveData<Double> {
         return lon
     }
 
     private var cityName = MutableLiveData<String>()
-    fun getcityName() : LiveData<String> {
+    fun getcityName(): LiveData<String> {
         return cityName
     }
 

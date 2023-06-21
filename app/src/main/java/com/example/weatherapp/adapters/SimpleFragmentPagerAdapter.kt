@@ -12,6 +12,7 @@ class SimpleFragmentPagerAdapter(fm: FragmentManager?) : FragmentPagerAdapter(fm
             0 -> {
                 MainFragment()
             }
+
             else -> {
                 SearchFragment()
             }

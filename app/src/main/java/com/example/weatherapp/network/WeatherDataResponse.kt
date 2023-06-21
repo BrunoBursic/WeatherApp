@@ -35,7 +35,7 @@ data class WeatherDataResponse(
         val day: Float,
         val eve: Float,
         val night: Float
-        )
+    )
 
     data class Weather(
         //val id: Int,

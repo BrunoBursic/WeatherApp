@@ -4,11 +4,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.example.weatherapp.R
 import com.example.weatherapp.network.WeatherDataResponse
+import org.w3c.dom.Text
 
-class HourlyAdapter(private val hourScreens: List<WeatherDataResponse.HourlyWeather>) : RecyclerView.Adapter<HourlyAdapter.HourlyViewHolder>() {
+class HourlyAdapter(private val hourScreens: LiveData<List<WeatherDataResponse.HourlyWeather>>) : RecyclerView.Adapter<HourlyAdapter.HourlyViewHolder>() {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HourlyViewHolder {
         val layout = LayoutInflater.from(parent.context).inflate(R.layout.hourly, parent, false)
 
@@ -16,15 +19,15 @@ class HourlyAdapter(private val hourScreens: List<WeatherDataResponse.HourlyWeat
     }
 
     override fun onBindViewHolder(holder: HourlyViewHolder, position: Int) {
-        val currentItem = hourScreens.get(position)
+        val currentItem = hourScreens.value?.get(position)
 
-        holder.time.text = currentItem.dt.toString()
-        holder.temperature.text = currentItem.temp.toString()
-        holder.rain.text = currentItem.pop.toString()
+        holder.time.text = currentItem?.dt.toString()
+        holder.temperature.text = currentItem?.temp.toString()
+        holder.rain.text = currentItem?.pop.toString()
     }
 
     override fun getItemCount(): Int {
-        return hourScreens.size
+        return hourScreens.value?.size ?: 0
     }
 
     class HourlyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -32,5 +35,4 @@ class HourlyAdapter(private val hourScreens: List<WeatherDataResponse.HourlyWeat
         val temperature: TextView = itemView.findViewById(R.id.temperature)
         val rain: TextView = itemView.findViewById(R.id.rain_possibility_hourly)
     }
-
 }

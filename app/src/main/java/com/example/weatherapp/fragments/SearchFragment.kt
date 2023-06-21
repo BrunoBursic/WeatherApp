@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import com.example.weatherapp.R
 import com.example.weatherapp.databinding.FragmentSearchBinding
 import com.example.weatherapp.viewmodels.CoordinatesViewModel
+import com.example.weatherapp.viewmodels.MyViewModelFactory
 import com.example.weatherapp.viewmodels.WeatherDataViewModel
 
 
@@ -17,7 +18,7 @@ class SearchFragment : Fragment() {
     private lateinit var binding: FragmentSearchBinding
 
     private val viewModel: CoordinatesViewModel by viewModels()
-    private val viewModel2: WeatherDataViewModel by viewModels()
+    private val viewModel2: WeatherDataViewModel by viewModels{ MyViewModelFactory(viewModel) }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,6 +27,10 @@ class SearchFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_search, container, false)
+
+        viewModel.coordinates("Zagreb")
+        viewModel2.weatherData()
+
         return binding.root
     }
 

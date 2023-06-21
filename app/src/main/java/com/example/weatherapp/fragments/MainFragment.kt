@@ -12,6 +12,8 @@ import com.example.weatherapp.R
 import com.example.weatherapp.adapters.DailyAdapter
 import com.example.weatherapp.adapters.HourlyAdapter
 import com.example.weatherapp.databinding.FragmentMainBinding
+import com.example.weatherapp.viewmodels.CoordinatesViewModel
+import com.example.weatherapp.viewmodels.MyViewModelFactory
 import com.example.weatherapp.viewmodels.WeatherDataViewModel
 
 class MainFragment : Fragment() {
@@ -19,7 +21,8 @@ class MainFragment : Fragment() {
     //video za implementaciju recyclerview-a
 
     private lateinit var binding: FragmentMainBinding
-    private val viewModel: WeatherDataViewModel by viewModels()
+    private val viewModel2: CoordinatesViewModel by viewModels()
+    private val viewModel: WeatherDataViewModel by viewModels{MyViewModelFactory(viewModel2)}
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,11 +41,11 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.hourlyRecyclerView.layoutManager = LinearLayoutManager(context)
+        binding.hourlyRecyclerView.layoutManager = LinearLayoutManager(this.context)
         binding.hourlyRecyclerView.setHasFixedSize(true)
         binding.hourlyRecyclerView.adapter = HourlyAdapter(viewModel.hourlyData)
 
-        binding.dailyRecyclerView.layoutManager = LinearLayoutManager(context)
+        binding.dailyRecyclerView.layoutManager = LinearLayoutManager(this.context)
         binding.dailyRecyclerView.setHasFixedSize(true)
         binding.dailyRecyclerView.adapter = DailyAdapter(viewModel.dailyData)
     }

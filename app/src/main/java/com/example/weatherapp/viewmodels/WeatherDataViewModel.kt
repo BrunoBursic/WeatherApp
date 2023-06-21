@@ -16,8 +16,8 @@ class WeatherDataViewModel (private val coordinatesViewModel: CoordinatesViewMod
     val cityNameLiveData: LiveData<String> = coordinatesViewModel.getcityName()
 
     lateinit var currentData: WeatherDataResponse.CurrentWeather
-    lateinit var hourlyData: List<WeatherDataResponse.HourlyWeather>
-    lateinit var dailyData: List<WeatherDataResponse.DailyWeather>
+    var hourlyData: List<WeatherDataResponse.HourlyWeather> = emptyList()
+    var dailyData: List<WeatherDataResponse.DailyWeather> = emptyList()
 
     lateinit var dt: String
     lateinit var temp: String

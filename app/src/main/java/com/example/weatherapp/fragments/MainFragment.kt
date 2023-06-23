@@ -7,14 +7,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.weatherapp.MainActivity
 import com.example.weatherapp.R
 import com.example.weatherapp.adapters.DailyAdapter
 import com.example.weatherapp.adapters.HourlyAdapter
+import com.example.weatherapp.adapters.SimpleFragmentPagerAdapter
 import com.example.weatherapp.databinding.FragmentMainBinding
 import com.example.weatherapp.viewmodels.CoordinatesViewModel
 import com.example.weatherapp.viewmodels.MyViewModelFactory
 import com.example.weatherapp.viewmodels.WeatherDataViewModel
+import kotlinx.coroutines.Dispatchers.Main
 
 class MainFragment : Fragment() {
     //https://www.youtube.com/watch?v=UbP8E6I91NA

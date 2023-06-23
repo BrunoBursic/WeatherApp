@@ -66,8 +66,8 @@ class WeatherDataViewModel(private val coordinatesViewModel: CoordinatesViewMode
                 _visibility.value = weatherData.current.visibility.toString()
 
                 _text.value = "${dt}\n${temp}\n${pressure}\n${humidity}\n${visibility}"
-            } catch (_: Exception) {
-
+            } catch (e: Exception) {
+                _text.value = "Exception: ${e.message}"
             }
         }
     }

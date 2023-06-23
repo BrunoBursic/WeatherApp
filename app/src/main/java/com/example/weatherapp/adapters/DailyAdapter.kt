@@ -13,7 +13,7 @@ import com.example.weatherapp.network.WeatherDataResponse
 class DailyAdapter(private val dayScreens: LiveData<List<WeatherDataResponse.DailyWeather>>) :
     RecyclerView.Adapter<DailyAdapter.DailyViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DailyViewHolder {
-        val layout = LayoutInflater.from(parent.context).inflate(R.layout.hourly, parent, false)
+        val layout = LayoutInflater.from(parent.context).inflate(R.layout.daily, parent, false)
 
         return DailyViewHolder(layout)
     }

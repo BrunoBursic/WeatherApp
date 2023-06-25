@@ -2,8 +2,19 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="colorPrimary">#35A0FF</color>
-    <color name="colorPrimaryDark">#161991</color>
-    <color name="colorAccent">#FBFF00</color>
-    FBFF00
+    <color name="colorPrimarySplash">#35A0FF</color>
+    <color name="colorPrimaryDarkSplash">#161991</color>
+
+    <color name="primary">#91D9FF</color>
+    <color name="primaryVariant">#65CAFF</color>
+    <color name="secondary">#FF9300</color>
+    <color name="secondaryVariant">#F08A00</color>
+    <color name="surface">#CAECFF</color>
+    <color name="error">#B00020</color>
+
+    <color name="darkPrimary">#0041AB</color>
+    <color name="darkPrimaryVariant">#003B9C</color>
+    <color name="darkSecondary">#EB7200</color>
+    <color name="darkSecondaryVariant">#CF6603</color>
+    <color name="darkSurface">#0061FF</color>
 </resources>

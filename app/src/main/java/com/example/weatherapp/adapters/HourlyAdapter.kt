@@ -7,8 +7,8 @@ import android.widget.TextView
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.example.weatherapp.R
+import com.example.weatherapp.fragments.MainFragment
 import com.example.weatherapp.network.WeatherDataResponse
-import org.w3c.dom.Text
 
 class HourlyAdapter(private val hourScreens: LiveData<List<WeatherDataResponse.HourlyWeather>>) : RecyclerView.Adapter<HourlyAdapter.HourlyViewHolder>() {
 

@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.weatherapp.network.WeatherDataApi
 import com.example.weatherapp.network.WeatherDataResponse
 import kotlinx.coroutines.launch
+import java.util.Date
 
 class WeatherDataViewModel(private val coordinatesViewModel: CoordinatesViewModel) : ViewModel() {
     //https://medium.com/@summitkumar/sharing-data-between-viewmodels-in-androids-mvvm-architecture-56a5009e4e63
@@ -49,8 +50,8 @@ class WeatherDataViewModel(private val coordinatesViewModel: CoordinatesViewMode
         viewModelScope.launch {
             try {
                 val weatherData = WeatherDataApi.retrofitService.getWeatherData(
-                    latLiveData.value,
-                    lonLiveData.value,
+                    latLiveData.value?.toDouble(),
+                    lonLiveData.value?.toDouble(),
                     "metric",
                     "1dfb4f777e8166a625871672bfe34c06"
                 )
@@ -59,11 +60,13 @@ class WeatherDataViewModel(private val coordinatesViewModel: CoordinatesViewMode
                 _hourlyData.value = weatherData.hourly
                 _dailyData.value = weatherData.daily
 
-                _dt.value = weatherData.current.dt.toString()
-                _temp.value = weatherData.current.temp.toString()
-                _pressure.value = weatherData.current.pressure.toString()
-                _humidity.value = weatherData.current.humidity.toString()
-                _visibility.value = weatherData.current.visibility.toString()
+                val date = Date(weatherData.current.dt * 1000)
+
+                _dt.value = "${date.date}.${(date.month + 1)}.${(date.year + 1900)}."
+                _temp.value = "Temperature: ${weatherData.current.temp} °C"
+                _pressure.value = "Pressure: ${weatherData.current.pressure} hPa"
+                _humidity.value = "Humidity: ${weatherData.current.humidity} %"
+                _visibility.value = "Visibility: ${weatherData.current.visibility} m"
 
                 _text.value = "${dt}\n${temp}\n${pressure}\n${humidity}\n${visibility}"
             } catch (e: Exception) {
@@ -72,3 +75,4 @@ class WeatherDataViewModel(private val coordinatesViewModel: CoordinatesViewMode
         }
     }
 }
+

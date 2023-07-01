@@ -40,7 +40,7 @@ class CoordinatesViewModel : ViewModel() {
                 lon.value = coordinates[0].lon
                 lat.value = coordinates[0].lat
 
-                _citydata.value = "Name: ${coordinates[0].name}\n " +
+                _citydata.value = "Name: ${coordinates[0].name}\n" +
                         "Lon: ${coordinates[0].lon}\n" +
                         "Lat: ${coordinates[0].lat}\n" +
                         "Country: ${coordinates[0].country}\n"

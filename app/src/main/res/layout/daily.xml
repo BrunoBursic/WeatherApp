@@ -12,8 +12,8 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
         <!--text for day on screen-->
         <TextView
@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="Monday"
-            android:textSize="30sp"
+            android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -33,9 +33,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
             android:gravity="center"
             android:text="18\nmorning"
-            android:textSize="30sp"
+            android:textSize="25sp"
             app:layout_constraintEnd_toStartOf="@id/day_temp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/day" />
@@ -46,9 +47,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
             android:gravity="center"
             android:text="25\nday"
-            android:textSize="30sp"
+            android:textSize="25sp"
             app:layout_constraintEnd_toStartOf="@id/evening_temp"
             app:layout_constraintStart_toEndOf="@id/morning_temp"
             app:layout_constraintTop_toBottomOf="@id/day" />
@@ -59,9 +61,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
             android:gravity="center"
             android:text="20\nevening"
-            android:textSize="30sp"
+            android:textSize="25sp"
             app:layout_constraintEnd_toStartOf="@id/night_temp"
             app:layout_constraintStart_toEndOf="@id/day_temp"
             app:layout_constraintTop_toBottomOf="@id/day" />
@@ -72,9 +75,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             android:gravity="center"
             android:text="19\nnight"
-            android:textSize="30sp"
+            android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/evening_temp"
             app:layout_constraintTop_toBottomOf="@id/day" />
@@ -86,18 +91,19 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="Rain possibility"
-            android:textSize="30sp"
+            android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/day_temp" />
 
         <TextView
             android:id="@+id/summary"
-            android:layout_width="wrap_content"
+            android:layout_width="305dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:gravity="center"
             android:text="Summary"
-            android:textSize="30sp"
+            android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/rain_possibility" />

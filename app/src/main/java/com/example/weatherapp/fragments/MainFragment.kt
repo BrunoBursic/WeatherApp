@@ -1,14 +1,12 @@
 package com.example.weatherapp.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.weatherapp.R
@@ -24,8 +22,8 @@ class MainFragment : Fragment() {
     //video za implementaciju recyclerview-a
 
     private lateinit var binding: FragmentMainBinding
-    private val viewModel2: CoordinatesViewModel by viewModels()
-    private val viewModel: WeatherDataViewModel by viewModels { MyViewModelFactory(viewModel2) }
+    private val viewModel2: CoordinatesViewModel by activityViewModels()
+    private val viewModel: WeatherDataViewModel by activityViewModels { MyViewModelFactory(viewModel2) }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,6 +31,11 @@ class MainFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_main, container, false)
+
+        binding.lifecycleOwner = viewLifecycleOwner
+        binding.weatherDataViewModel = viewModel
+        binding.mainFragment = this
+
         return binding.root
     }
 
@@ -43,11 +46,11 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.hourlyRecyclerView.layoutManager = LinearLayoutManager(this.context)
+        binding.hourlyRecyclerView.layoutManager = LinearLayoutManager(this.context, RecyclerView.HORIZONTAL, false)
         binding.hourlyRecyclerView.setHasFixedSize(true)
         binding.hourlyRecyclerView.adapter = HourlyAdapter(viewModel.hourlyData)
 
-        binding.dailyRecyclerView.layoutManager = LinearLayoutManager(this.context)
+        binding.dailyRecyclerView.layoutManager = LinearLayoutManager(this.context, RecyclerView.HORIZONTAL, false)
         binding.dailyRecyclerView.setHasFixedSize(true)
         binding.dailyRecyclerView.adapter = DailyAdapter(viewModel.dailyData)
     }
